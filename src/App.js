@@ -1,52 +1,48 @@
-import { useState } from 'react';
+"use client"
 
-export default function Calc() {
-  const [data, setData] = useState([]);
-  const [sum, setSum] = useState(0);
-  const [max, setMax] = useState(0);
-  const [average, setAverage] = useState(0);
-  const [num, setNum] = useState('');
+import { motion } from "framer-motion"
 
-  const sumr = (a, b) => setSum(a + b);
-  const maxr = (a, b, c) => setMax(Math.max(a, b, c));
-  const averager = (a, b, c) => setAverage((a + b + c) / 3);
-
-  const datar = () => {
-    const newData = [...data];
-    newData.push(Number(num));
-    setData(newData);
-    setNum('');
-  };
-
-  const Submit = () => {
-    if (data.length >= 3) {
-      sumr(data[0], data[1]);
-      maxr(data[0], data[1], data[2]);
-      averager(data[0], data[1], data[2]);
-    }
-  };
-
-  return (
+export default function Page() {
+  return ( 
     <div>
-      <input
-        type="number"
-        value={num}
-        onChange={(e) => setNum(e.target.value)}
-        placeholder="Enter number"
-      />
-      <button onClick={datar} className='w-24 h-12 border-2 mx-4'>Add</button>
 
-      <button onClick={Submit} className='w-24 h-12 border-2'>Submit</button>
+      <div style={{height:"120vh"}}></div>
 
-      <p>
-        Sum: <span>{sum}</span>
-      </p>
-      <p>
-        Max: <span>{max}</span>
-      </p>
-      <p>
-        Average: <span>{average}</span>
-      </p>
+      <div
+        style={{
+          height:500,
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center",
+          gap:10,
+          background:"white"
+        }}
+      >
+
+        <motion.div
+          initial={{x:0, opacity:0}}
+          whileInView={{x:-50, opacity:1}}
+          exit={{x:0, opacity:0}}
+          viewport={{amount:0.4}}
+          transition={{duration:0.6, delay:0}}
+        >
+          <h2>Banking Made Simple</h2>
+          <p>Control everything from your phone.</p>
+        </motion.div>
+
+        <motion.img
+          src="/image.png"
+          style={{width:800}}
+          initial={{x:0, opacity:0}}
+          whileInView={{x:50, opacity:1}}
+          viewport={{amount:0.4}}
+          transition={{duration:0.6, delay:0}}
+        />
+
+      </div>
+
+      <div style={{height:"120vh"}}></div>
+
     </div>
-  );
+  )
 }
