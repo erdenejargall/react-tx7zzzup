@@ -97,7 +97,7 @@ export default function Page() {
           transition={{ duration: 0.6, delay: 0 }}
         />{" "}
         <motion.div
-          initial={{ x: 150, opacity: 0 }}
+          initial={{ x: 150, y:-100, opacity: 0 }}
           whileInView={{ x: -30, y: -100, opacity: 1 }}
           exit={{ x: 0, opacity: 0 }}
           viewport={{ amount: 0.4 }}
